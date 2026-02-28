@@ -1,0 +1,17 @@
+[Unit]
+Description=OfferClaw FastAPI (port 8000)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/inuyasha/.openclaw/workspace/offerclaw/backend
+ExecStart=/usr/bin/python3 -m uvicorn main:app --host 0.0.0.0 --port 8000
+Restart=always
+RestartSec=5
+StandardOutput=append:/tmp/openclaw-demo/api.log
+StandardError=append:/tmp/openclaw-demo/api.log
+Environment="HOME=/home/inuyasha"
+Environment="OPENROUTER_API_KEY=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"
+
+[Install]
+WantedBy=default.target

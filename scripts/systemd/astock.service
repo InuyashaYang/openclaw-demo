@@ -1,0 +1,16 @@
+[Unit]
+Description=A股监控 Flask (port 5000)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/inuyasha/.openclaw/workspace/skills/a-stock-monitor/scripts
+ExecStart=/usr/bin/python3 web_app.py
+Restart=always
+RestartSec=5
+StandardOutput=append:/tmp/openclaw-demo/astock.log
+StandardError=append:/tmp/openclaw-demo/astock.log
+Environment="HOME=/home/inuyasha"
+
+[Install]
+WantedBy=default.target
